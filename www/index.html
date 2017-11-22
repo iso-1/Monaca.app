@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://
+    ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -30,6 +31,20 @@
         document.getElementById("content").innerHTML = "";
     }
 </script>
+
+     <script>
+        document.addEventListener ("deviceready", onDeviceReady, false);
+
+        // Cordovaの準備が完了したときに呼ばれるコールバック関数
+        function onDeviceReady () {
+            
+            //alert ('Cordova is ready!');
+            // 例えばここに、Cordova関係の処理や変数（フラグ）を書く
+        }
+    </script>
+    
+    
+
     
 </head
 
@@ -38,12 +53,12 @@
         <div data-role="header" data-position="fixed" data-theme="c">
             <h1>TODO App</h1>
             <a href="#add-page" data-icon="add" class="ui-btn-left">追加</a>
-            <a href="f.html" data-icon="add" class="ui-btn-right">通知</a>
+            <a href="notification.html" data-icon="add" class="ui-btn-right">通知</a>
         </div>
         <div data-role="content">
             <ul data-role="listview" data-inset="true" id="todo-list"></ul>
                        <!-- タイマーここから -->
-            <script>
+<script>
 
 var timer1; //タイマーを格納する変数（タイマーID）の宣言
 
@@ -89,6 +104,14 @@ function countDown()
   }
 }
 
+function timerCallback(results) {
+    if (results == 1) {  // スヌーズ
+        reSet();
+        document.timer.elements[1].value = "5"; // sec
+        cntStart();
+    }
+}
+
 //残り時間を書き出す関数
 function tmWrite(int)
 {
@@ -96,8 +119,13 @@ function tmWrite(int)
 
   if (int<=0)
   {
-    reSet();
-    alert("時間です！");
+    reSet()
+    navigator.notification.beep(2);
+    // alert("時間になりました");
+    navigator.notification.confirm("再通知しますか", 
+        timerCallback, 
+        "時間です！", 
+        ["スヌーズ", "結構です"]);
   }
   else
   {
@@ -105,7 +133,8 @@ function tmWrite(int)
     document.timer.elements[0].value=Math.floor(int/60);
     //残り秒数はintを60で割った余り
     document.timer.elements[1].value=int % 60;
-      var msg = document.timer.elements[0].value + "分"+ document.timer.elements[1].value + "秒"; // 表示文作成
+      var msg = document.timer.elements[0].
+      value + "分"+ document.timer.elements[1].value + "秒"; // 表示文作成
       document.getElementById("PassageArea").innerHTML = msg; // 表示更新      
   }
 }
@@ -146,8 +175,10 @@ function reSet()
         <div data-role="content">
             <input id="todo-title" type="text" placeholder="TODOタイトル">
             <textarea id="todo-body" style="height: 8em" placeholder="説明文"></textarea>
+            
 
-            <input id="add-button" type="button" value="保存" onclick="addTodo(), localStorageSetItem();">
+            <input id="add-button" type="button" value="保存" 
+            onclick="addTodo(), localStorageSetItem();">
         </div>
     </div>
 </body>
