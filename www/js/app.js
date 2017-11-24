@@ -8,7 +8,6 @@ function addTodo(camera_url) {
      $.mobile.changePage($("#list-page"));
      $("#todo-list").append("<li>" + img_tag + "<h3>" + title + "</h3><p>" + body + "</p></li>")
      $("#todo-list").listview('refresh');
-     $('#timer').yycountdown({endDateTime:'2018/11/24 00:00:00'});
 };
 
 

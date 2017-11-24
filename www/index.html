@@ -15,7 +15,6 @@
     function localStorageSetItem() {
         var obj = $("date-deadline").text();
         localStorage.setItem(KEY, JSON.stringify(obj));
-        alert("Local Storage: データーをセットしました。")
     }
     // ローカルストレージの値を取得します。。document文書
     function localStorageGetItem() {
@@ -41,22 +40,7 @@
         }
     </script>
     
-    
-    
-    
-</head
-    
-<body>
-    <div data-role="page" id="list-page"> <!--  data-role page JQmobileのページ作成 -->
-        <div data-role="header" data-position="fixed" data-theme="c">
-            <h1>TODO App</h1>
-            <a href="#add-page" data-icon="add" class="ui-btn-left">追加</a>
-            <a href="notification.html" data-icon="add" class="ui-btn-right">通知</a>
-        </div>
-        <div data-role="content">
-            <ul data-role="listview" data-inset="true" id="todo-list"></ul>
-                       <!-- タイマーここから -->
-<script>
+    <script>
 var timer1; //タイマーを格納する変数（タイマーID）の宣言
 //カウントダウン関数を1000ミリ秒毎に呼び出す関数
 function cntStart()
@@ -146,12 +130,27 @@ function reSet()
 }  
   
 </script>
+    
+    
+</head
+    
+<body>
+    <div data-role="page" id="list-page"> <!--  data-role page JQmobileのページ作成 -->
+        <div data-role="header" data-position="fixed" data-theme="c">
+            <h1>TODO App</h1>
+            <a href="#add-page" data-icon="add" class="ui-btn-left">追加</a>
+            <a href="notification.html" data-icon="add" class="ui-btn-right">通知</a>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" id="todo-list"></ul>
+                       <!-- タイマーここから -->
+
 <body>
 
 <form name="timer">
 <input  type="text" value="" > 分 <input  type="text" value="2" > 秒 <br>
-<input type="button" value="スタート" onclick="cntStart()" class="sbt">
-<input type="button" value="ストップ" onclick="cntStop()" class="sbt" >
+<input type="button" value="スタート" onclick="cntStart()">
+<input type="button" value="ストップ" onclick="cntStop()">
 </form>
 
 <h4>あと</h4>
@@ -162,7 +161,7 @@ function reSet()
     </div>
 
     <div data-role="page" id="add-page">
-        <div data-role="header" data-position="fixed" data-theme="c"> 
+        <div data-role="header" data-position="fixed" data-theme="c"> <!--data-themeはヘッダーの色 -->
             <h1>TODOの追加</h1>
             <a href="#list-page" data-icon="back" class="ui-btn-left">戻る</a>
         </div>
