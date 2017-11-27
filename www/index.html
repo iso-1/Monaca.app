@@ -10,6 +10,11 @@
     <script src="js/cssua.min.js"></script>
     <script src="js/app.js"></script>
     <script>
+        cordova.plugins.notification.local.registerPermission(function(){
+            console.log("Permitted.")
+            })
+    </script>
+    <script>
     var KEY = "key1";
     // ローカルストレージをセットします。
     function localStorageSetItem() {
@@ -94,6 +99,11 @@ function timerCallback(results) {
         ["1分後", "10分後"]);
     }
 }
+function timerCallback(results) {
+    if (results == 2) { // スヌーズ
+    reSet()
+    }
+}
 　
 //残り時間を書き出す関数
 function tmWrite(int)
@@ -105,6 +115,8 @@ function tmWrite(int)
     reSet()
     navigator.notification.beep(1);
     // alert("時間になりました");
+    document.timer.elements[1].value = "5"; // sec
+        cntStart();　
     navigator.notification.confirm("再通知しますか", 
         timerCallback, 
         "時間です！", 
@@ -153,6 +165,7 @@ function reSet()
 <input type="button" value="ストップ" onclick="cntStop()">
 </form>
 
+
 <h4>あと</h4>
 <h2 id="PassageArea"></h2>
             <!--ここまで-->
@@ -170,7 +183,7 @@ function reSet()
             <textarea id="todo-body" style="height: 8em" placeholder="説明文"></textarea>
             
 
-            <input id="add-button" type="button" value="保存" onclick="addTodo(), localStorageSetItem();">
+            <input id="add-button" type="button" value="保存" onclick="addTodo()">
         </div>
     </div>
 </body>
