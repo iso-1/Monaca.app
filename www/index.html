@@ -10,9 +10,9 @@
     <script src="js/cssua.min.js"></script>
     <script src="js/app.js"></script>
     <script>
-        cordova.plugins.notification.local.registerPermission(function(){
-            console.log("Permitted.")
-            })
+//        cordova.plugins.notification.local.registerPermission(function(){
+//            console.log("Permitted.")
+//            })
     </script>
     <script>
     var KEY = "key1";
@@ -82,28 +82,40 @@ function countDown()
   }
 }
 
-function timerCallback2(results) {
-    if (results == 1) { // 1分後
+function onPrompt(results) {
+    if (results == 1)   // 1分後
         reSet();
-        document.timer.elements[1].value = "5"; // sec
+        document.timer.elements[0].value = (results.input1); // sec
         cntStart();
-    }
+    
+    
 }
+
+function onPrompt(results) {
+    if (results == 2)   // 1分後
+        reSet();
+        document.timer.elements[1].value = (results.input1); // sec
+        cntStart();
+    
+    
+}
+
 
 function timerCallback(results) {
     if (results == 1) { // スヌーズ
     reSet()
-　　navigator.notification.confirm("何分後にしますか", 
-        timerCallback2, 
+　　navigator.notification.prompt("何秒後にしますか", 
+        onPrompt, 
         "スヌーズ機能", 
-        ["1分後", "10分後"]);
+        ["分後","秒後", "キャンセル"]);
     }
-}
-function timerCallback(results) {
-    if (results == 2) { // スヌーズ
+    else
+    {
     reSet()
+
     }
 }
+
 　
 //残り時間を書き出す関数
 function tmWrite(int)
@@ -114,13 +126,19 @@ function tmWrite(int)
   {
     reSet()
     navigator.notification.beep(1);
-    // alert("時間になりました");
+    navigator.notification.vibrate(5000)
     document.timer.elements[1].value = "5"; // sec
         cntStart();　
+   
     navigator.notification.confirm("再通知しますか", 
         timerCallback, 
         "時間です！", 
         ["スヌーズ", "結構です"]);
+//        Dialog.info("5秒後に自動的に消えます", {
+//windowParameters: {width:300, height:90},
+//showProgress: true
+//});
+//setTimeout("Dialog.closeInfo()", 5000);
   }
   else
   {
@@ -163,6 +181,7 @@ function reSet()
 <input  type="text" value="" > 分 <input  type="text" value="2" > 秒 <br>
 <input type="button" value="スタート" onclick="cntStart()">
 <input type="button" value="ストップ" onclick="cntStop()">
+<input type="button" value="リセット" onclick="reset(),cntStop()">
 </form>
 
 

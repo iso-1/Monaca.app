@@ -4,11 +4,9 @@
   <description>Made with Monaca (http://monaca.mobi)</description>
   <author/>
   <content src="index.html"/>
-  <access origin="*"/>
   <allow-navigation href="*"/>
   <allow-intent href="itms:*"/>
   <allow-intent href="itms-apps:*"/>
-  <preference name="DisallowOverscroll" value="true"/>
   <preference name="Orientation" value="default"/>
   <preference name="loglevel" value="DEBUG"/>
   <preference name="AndroidLaunchMode" value="singleTop"/>
@@ -18,14 +16,10 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="1000"/>
   <preference name="AllowInlineMediaPlayback" value="false"/>
-  <preference name="AutoHideSplashScreen" value="true"/>
   <preference name="BackupWebStorage" value="cloud"/>
-  <preference name="EnableViewportScale" value="false"/>
-  <preference name="FadeSplashScreen" value="true"/>
   <preference name="FadeSplashScreenDuration" value="250"/>
   <preference name="KeyboardDisplayRequiresUserAction" value="true"/>
   <preference name="MediaPlaybackRequiresUserAction" value="false"/>
-  <preference name="ShowSplashScreenSpinner" value="false"/>
   <preference name="SuppressesIncrementalRendering" value="false"/>
   <preference name="TopActivityIndicator" value="gray"/>
   <preference name="GapBetweenPages" value="0"/>
@@ -37,7 +31,6 @@
   </feature>
   <preference name="UIWebViewDecelerationSpeed" value="normal"/>
   <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
-  <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2"/>
   <platform name="ios">
     <icon src="/res/ios/icon/icon.png" width="57" height="57"/>
     <icon src="/res/ios/icon/icon@2x.png" width="114" height="114"/>
@@ -69,6 +62,7 @@
     <config-file platform="ios" parent="CFBundleLocalizations" target="*-Info.plist">
       <array>
         <string>en</string>
+        <string>ja</string>
       </array>
     </config-file>
   </platform>
@@ -101,4 +95,11 @@
   <preference name="monaca:MonacaBackendUrl" value="https://cloud.monaca.mobi/json-rpc/"/>
   <preference name="monaca:MonacaBackendId" value="59c0d0af803451fd14b2cde8"/>
   <preference name="monaca:MonacaBackendApiKey" value="a53d2d7147d66784e1358793061312c29f4a44bfd49a5a1d0f84a9f8d7040d57"/>
+  <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+  <preference name="FadeSplashScreen" value="true"/>
+  <preference name="ShowSplashScreenSpinner" value="false"/>
+  <access origin="*"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="EnableViewportScale" value="false"/>
 </widget>
